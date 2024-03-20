@@ -39,6 +39,16 @@ services:
       # You don't need to create the `db-data` folder. Docker Compose will do it for you.
       - ./db-data/:/var/lib/postgresql/data/
 
+  mongodb:
+    image: 'mongodb/mongodb-community-server:latest'
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: demo
+    volumes:
+      - ./mongodb-data/:/data/db/
+
   cassandra:
     image: 'cassandra:latest'
     ports:
